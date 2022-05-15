@@ -1,0 +1,88 @@
+{
+  "permissions": {
+    "/books": [
+      "ROLE_USER",
+      "ROLE_ADMIN"
+    ],
+    "/rents": [
+      "ROLE_USER",
+      "ROLE_ADMIN"
+    ]
+  },
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin",
+      "roles": [
+        "ROLE_ADMIN"
+      ]
+    },
+    {
+      "id": 2,
+      "username": "user",
+      "password": "user",
+      "roles": [
+        "ROLE_USER"
+      ]
+    }
+  ],
+  "books": [
+    {
+      "id": 1,
+      "title": "His Second Book",
+      "author": "Dan Simmons",
+      "genre": "Soft science fiction"
+    },
+    {
+      "id": 2,
+      "title": "Endymion",
+      "author": "Dan Simmons",
+      "genre": "Science fiction"
+    },
+    {
+      "id": 3,
+      "title": "Third Book",
+      "author": "Third Author",
+      "genre": "Third Genre"
+    }
+  ],
+  "rents": [
+    {
+      "id": 1,
+      "userId": 2,
+      "bookId": 2,
+      "rentDate": "2022-05-15T17:36:15.290Z",
+      "returnDate": "2022-05-22T17:36:15.290Z",
+      "state": "returned",
+      "price": 0
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "bookId": 1,
+      "rentDate": "2022-05-15T17:36:15.691Z",
+      "returnDate": "2022-05-22T17:36:15.691Z",
+      "state": "borrowed",
+      "price": 0
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "bookId": 3,
+      "rentDate": "2022-05-15T17:37:29.655Z",
+      "returnDate": "2022-05-22T17:37:29.655Z",
+      "state": "borrowed",
+      "price": 0
+    },
+    {
+      "id": 4,
+      "userId": 2,
+      "bookId": 3,
+      "rentDate": "2022-05-15T18:08:01.951Z",
+      "returnDate": "2022-05-22T18:08:01.951Z",
+      "state": "returned",
+      "price": 0
+    }
+  ]
+}
