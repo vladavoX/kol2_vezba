@@ -1,0 +1,75 @@
+<form [formGroup]="rentForm" (submit)="onSubmit()" *ngIf="display">
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>User Id</mat-label>
+      <input formControlName="userId" matInput type="number" required>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Book Id</mat-label>
+      <input formControlName="bookId" matInput type="number" required>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Rent Date</mat-label>
+      <input formControlName="rentDate" matInput type="datetime-local" required>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Return Date</mat-label>
+      <input formControlName="returnDate" matInput type="datetime-local" required>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>State</mat-label>
+      <input formControlName="state" matInput type="text" required>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Price</mat-label>
+      <input formControlName="price" matInput type="number" required>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <button type="submit" mat-raised-button color="primary">Submit</button>
+  </div>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>User ID</th>
+      <th>Book ID</th>
+      <th>Rent Date</th>
+      <th>Return Date</th>
+      <th>State</th>
+      <th>Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let r of rents; index as i">
+      <td>{{r['id']}}</td>
+      <td>{{r['userId']}}</td>
+      <td>{{r['bookId']}}</td>
+      <td>{{r['rentDate']}}</td>
+      <td>{{r['returnDate']}}</td>
+      <td>{{r['state']}}</td>
+      <td>{{r['price']}}</td>
+      <td>
+        <button (click)="updateRent(i, r)" *ngIf="display" mat-raised-button color="accent">Change</button>
+        <button (click)="deleteRent(i, r)" *ngIf="display" mat-raised-button color="warn">Delete</button>
+        <button (click)="returnRent(i, r)" *ngIf="r.state === 'borrowed'" mat-raised-button
+          color="accent">Return</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

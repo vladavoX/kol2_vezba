@@ -1,0 +1,79 @@
+<section class="center">
+  <form [formGroup]="bookForm" (submit)="onSubmit()" *ngIf="display">
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <input formControlName="title" matInput type="text" required>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Author</mat-label>
+        <input formControlName="author" matInput type="text" required>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Genre</mat-label>
+        <input formControlName="genre" matInput type="text" required>
+      </mat-form-field>
+    </div>
+    <div>
+      <button type="submit" mat-raised-button color="primary">Submit</button>
+    </div>
+  </form>
+
+  <div cdkDropListGroup>
+    <table [cdkDropListData]="books" cdkDropList (cdkDropListDropped)="drop($event)">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Genre</th>
+          <th *ngIf="display">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr cdkDrag *ngFor="let b of books; index as i">
+          <td>{{b['id']}}</td>
+          <td>{{b['title']}}</td>
+          <td>{{b['author']}}</td>
+          <td>{{b['genre']}}</td>
+          <td *ngIf="display">
+            <button (click)="updateBook(i, b)" mat-raised-button color="accent">Change</button>
+            <button (click)="deleteBook(i, b)" mat-raised-button color="warn">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr>
+    <h1>DRAG TO RENT</h1>
+
+    <table [cdkDropListData]="forRent" cdkDropList (cdkDropListDropped)="drop($event)">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Genre</th>
+          <th *ngIf="display">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr cdkDrag *ngFor="let b of forRent; index as i">
+          <td>{{b['id']}}</td>
+          <td>{{b['title']}}</td>
+          <td>{{b['author']}}</td>
+          <td>{{b['genre']}}</td>
+          <td>
+            <button (click)="rentBook(i, b)" mat-raised-button color="primary">Rent</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
